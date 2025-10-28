@@ -4,7 +4,7 @@ name: Deploy React (Vite) App to GitHub Pages
 # Gatilho: rodar sempre que houver um push na branch 'main'
 on:
   push:
-    branches: [ "main" ] # Mude para 'master' se for o nome da sua branch
+    branches: [ "main" ] # Mudar para 'master' se for o nome da minha branch
 
 # Permissões necessárias para o job poder escrever no GitHub Pages
 permissions:
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Baixa o código do seu repositório
+      # 1. Baixa o código do meu repositório
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -32,9 +32,9 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Pode usar 18 ou 20
+          node-version: '20' # 
 
-      # 3. Instala as dependências (na raiz do projeto)
+      # 3. Instala as dependências na raiz do projeto
       - name: Install dependencies
         run: npm install
 
