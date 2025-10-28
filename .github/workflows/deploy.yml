@@ -1,0 +1,59 @@
+# Nome do workflow
+name: Deploy React (Vite) App to GitHub Pages
+
+# Gatilho: rodar sempre que houver um push na branch 'main'
+on:
+  push:
+    branches: [ "main" ] # Mude para 'master' se for o nome da sua branch
+
+# Permissões necessárias para o job poder escrever no GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Define os jobs (tarefas)
+jobs:
+  build-and-deploy:
+    # Ambiente de deploy
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    # Sistema operacional
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Baixa o código do seu repositório
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Configura o ambiente Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18' # Pode usar 18 ou 20
+
+      # 3. Instala as dependências (na raiz do projeto)
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Gera os arquivos estáticos (Build)
+      - name: Build project
+        run: npm run build
+
+      # 5. Configura o GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # 6. Faz o upload do artefato (da pasta 'dist' do Vite)
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Caminho corrigido para Vite: 'dist'
+          path: './dist'
+
+      # 7. Faz o deploy final no GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
