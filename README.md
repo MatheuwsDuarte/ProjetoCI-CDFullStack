@@ -1,5 +1,7 @@
 # Projeto: Engenharia Web e DevOps - CI/CD e Testes
 
+[![Deploy React (Vite) App to GitHub Pages](https://github.com/MatheuwsDuarte/ProjetoCI-CDFullStack/actions/workflows/deploy.yml/badge.svg)](https://github.com/MatheuwsDuarte/ProjetoCI-CDFullStack/actions/workflows/deploy.yml)
+
 Este repositório contém a implementação prática das atividades da disciplina de **Engenharia Web e DevOps**. O objetivo foi configurar uma esteira completa de desenvolvimento de software, partindo de uma aplicação React (Vite) até a entrega contínua com garantia de qualidade.
 
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
