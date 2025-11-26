@@ -37,23 +37,27 @@ jobs:
       # 3. Instala as dependências na raiz do projeto
       - name: Install dependencies
         run: npm install
+        
+      # 4. Testes
+      - name: Run Unit Tests
+        run: npm run test
 
-      # 4. Gera os arquivos estáticos (Build)
+      # 5. Gera os arquivos estáticos (Build)
       - name: Build project
         run: npm run build
 
-      # 5. Configura o GitHub Pages
+      # 6. Configura o GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # 6. Faz o upload do artefato (da pasta 'dist' do Vite)
+      # 7. Faz o upload do artefato (da pasta 'dist' do Vite)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Caminho corrigido para Vite: 'dist'
           path: './dist'
 
-      # 7. Faz o deploy final no GitHub Pages
+      # 8. Faz o deploy final no GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
